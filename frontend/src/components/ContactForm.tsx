@@ -32,31 +32,31 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit, onCancel }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simple validation
-    if (!formData.fullName || !formData.email || !formData.phone) {
-      toast({
-        title: "Ошибка",
-        description: "Пожалуйста, заполните все обязательные поля",
-        variant: "destructive"
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Предотвращаем перезагрузку страницы
+  
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/contact/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), // Отправляем данные формы
       });
-      return;
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Успешно отправлено:", result);
+        toast({ title: "Успех", description: "Данные успешно отправлены!" });
+        onSubmit(formData); // Вызываем onSubmit для родительского компонента
+      } else {
+        console.error("Ошибка сервера:", await response.text());
+        toast({ title: "Ошибка", description: "Не удалось отправить данные." });
+      }
+    } catch (error) {
+      console.error("Ошибка сети:", error);
+      toast({ title: "Ошибка сети", description: "Проверьте подключение к интернету." });
     }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast({
-        title: "Ошибка",
-        description: "Пожалуйста, введите корректный email",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    onSubmit(formData);
   };
 
   return (
