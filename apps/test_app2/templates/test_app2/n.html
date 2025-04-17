@@ -1,0 +1,91 @@
+{% load static %} {% load filters %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drone Configurator</title>
+    <link rel="stylesheet" href="{% static 'n_app/styles.css' %}" />
+  </head>
+  <body>
+    <!-- Logo -->
+    <header>
+      <h1>Drone Configurator</h1>
+    </header>
+
+    <!-- Scenario Buttons -->
+    <div class="scenario-buttons">
+      <button type="button" onclick="setScenario('Охрана')">Охрана</button>
+      <button type="button" onclick="setScenario('Геодезия')">Геодезия</button>
+      <button type="button" onclick="setScenario('Инспекция')">
+        Инспекция
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Left Panel: Configurator -->
+      <div class="configurator-panel">
+        <h2>Конфигуратор</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="scenario" id="scenario" value="" />
+          {% for i in "1234567890"|make_list %}
+          <div class="form-group">
+            <label for="payload_{{ i }}">Грузоподъемность {{ i }} (кг):</label>
+            <input
+              type="number"
+              name="payload_{{ i }}"
+              id="payload_{{ i }}"
+              step="0.1"
+              min="0"
+              max="10"
+              required
+            />
+          </div>
+          {% endfor %}
+          <button type="submit" name="configure">Конфигурация</button>
+          <button type="button" disabled>Сгенерировать заявку (.doc)</button>
+        </form>
+
+        <!-- Results -->
+        {% if result %}
+        <div class="results">
+          <h3>Результаты конфигурации</h3>
+          <p><strong>Сценарий:</strong> {{ scenario }}</p>
+          {% for payload in payloads %}
+          <p>
+            <strong>Грузоподъемность {{ forloop.counter }}:</strong> {{ payload
+            }} кг
+          </p>
+          {% endfor %}
+          <p><strong>Предварительная стоимость:</strong> {{ cost }}</p>
+        </div>
+        {% endif %} {% if error %}
+        <div class="error">
+          <p>Ошибка: {{ error }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Right Panel: AI Chat -->
+      <div class="chat-panel">
+        <h2>Чат с ИИ</h2>
+        <div
+          id="ai-chat"
+          style="height: 400px; border: 1px solid #ccc; padding: 10px"
+        >
+          <!-- React will mount the AI chat here -->
+          <p>Заглушка для чата с ИИ. React-компонент будет внедрен сюда.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function setScenario(scenario) {
+        document.getElementById("scenario").value = scenario;
+        alert("Выбран сценарий: " + scenario);
+      }
+    </script>
+  </body>
+</html>
