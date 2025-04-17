@@ -88,7 +88,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
   }, [messages, initialMessages]);
   
   const apiKey = 'Я ПИДАРАС';
-  const url = 'https://api.openai.com/v1/chat/completions';
+  const url = 'залупа';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserInput(e.target.value);
