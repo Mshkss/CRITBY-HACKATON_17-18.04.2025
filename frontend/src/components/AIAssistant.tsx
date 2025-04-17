@@ -87,8 +87,8 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
     }
   }, [messages, initialMessages]);
   
-  const apiKey = 'Я ПИДАРАС';
-  const url = 'залупа';
+  const apiKey = '';
+  const url = '';
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserInput(e.target.value);
