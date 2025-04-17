@@ -5,6 +5,5 @@ app_name = "test_app2"
 
 
 urlpatterns = [
-    #path("", views.main_view, name="main"),
     path("double-number/", double_number, name="double_number"),
 ]

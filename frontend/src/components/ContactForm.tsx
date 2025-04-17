@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,31 +31,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit, onCancel }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // Предотвращаем перезагрузку страницы
-  
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/contact/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData), // Отправляем данные формы
-      });
-  
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Успешно отправлено:", result);
-        toast({ title: "Успех", description: "Данные успешно отправлены!" });
-        onSubmit(formData); // Вызываем onSubmit для родительского компонента
-      } else {
-        console.error("Ошибка сервера:", await response.text());
-        toast({ title: "Ошибка", description: "Не удалось отправить данные." });
-      }
-    } catch (error) {
-      console.error("Ошибка сети:", error);
-      toast({ title: "Ошибка сети", description: "Проверьте подключение к интернету." });
-    }
+
+    console.log("Данные формы:", formData);
+    toast({ title: "Успех", description: "Данные успешно обработаны!" });
+    onSubmit(formData); // Вызываем onSubmit для родительского компонента
   };
 
   return (

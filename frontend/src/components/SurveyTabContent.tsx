@@ -117,32 +117,54 @@ const SurveyTabContent: React.FC<SurveyTabContentProps> = ({
   };
   
   // Handle form submission
-  const handleContactFormSubmit = (contactData: ContactFormData) => {
-    setIsSubmitting(true);
-    
-    // Record the final timing data
-    const finalTimingData = { ...timingData };
-    finalTimingData.totalSurveyTime = Date.now() - timingData.sessionStart;
-    
-    // Логируем отправляемые данные
-    console.log("Отправка заявки с данными:", {
-      contact: contactData,
-      responses,
-      tags: selectedTags,
-      timingData: finalTimingData
+  const handleContactFormSubmit = async (contactData: ContactFormData) => {
+  setIsSubmitting(true);
+
+  // Record the final timing data
+  const finalTimingData = { ...timingData };
+  finalTimingData.totalSurveyTime = Date.now() - timingData.sessionStart;
+
+  // Логируем отправляемые данные
+  console.log("Отправка заявки с данными:", {
+    contact: contactData,
+    responses,
+    tags: selectedTags,
+    timingData: finalTimingData
+  });
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/app2/double-number/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contact: contactData,
+        responses,
+        tags: selectedTags,
+        timingData: finalTimingData
+      }),
     });
-    
-    // Имитация отправки на сервер
-    setTimeout(() => {
-      toast({
-        title: "Запрос отправлен",
-        description: "Специалист свяжется с вами в ближайшее время",
-      });
-      setIsSubmitting(false);
-      onSubmitComplete(contactData, finalTimingData);
-    }, 1500);
-  };
-  
+
+    if (!response.ok) {
+      throw new Error('Ошибка при отправке данных');
+    }
+
+    toast({
+      title: "Запрос отправлен",
+      description: "Специалист свяжется с вами в ближайшее время",
+    });
+    setIsSubmitting(false);
+    onSubmitComplete(contactData, finalTimingData);
+  } catch (error) {
+    toast({
+      title: "Ошибка",
+      description: "Не удалось отправить заявку. Попробуйте позже.",
+      variant: "destructive",
+    });
+    setIsSubmitting(false);
+  }
+};
   const handleContactFormCancel = () => {
     setShowContactForm(false);
   };
