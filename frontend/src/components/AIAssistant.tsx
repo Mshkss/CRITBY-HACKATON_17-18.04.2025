@@ -87,13 +87,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
     }
   }, [messages, initialMessages]);
   
-<<<<<<< HEAD
-  //api and url here//
-=======
-  //const 
-  //const 
->>>>>>> 69384cf (123)
-
+// api was here // 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserInput(e.target.value);
   };
