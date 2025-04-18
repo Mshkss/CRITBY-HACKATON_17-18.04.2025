@@ -1,24 +1,44 @@
-Тема: Мобильный конфигуратор БАС для клиентов
+Mobile UAV Configurator for Clients
+Hackathon: KRITBI AVAX
+Dates: 17.04.2025 – 18.04.2025
+My role: Python Django backend development, organizing requests (JSON, HTTP POST) between frontend and backend, and setting up CI/CD processes.
 
-Описание: Покупатели БАС нередко являются отраслевыми специалистами в своей сфере, но не  являются операторами БАС и специалистами по ним; нужно создать интерфейс-консультант, который подскажет нужную конфигурацию на основе задачи, рассчитает стоимость и отправит запрос в отдел продаж.
+📌 Topic
+Mobile UAV Configurator for Clients
 
-Функциональность:
--  Выбор сценария применения (охрана, геодезия, инспекция и т.п)
-- Алгоритм подбора модели, полезной нагрузки, аккумулятора и прочее
-- Предварительный расчет стоимости (если запрос нетиповой - фраза "требуется дополнительный анализ специалиста, окончательная стоимость будет отражена в ТКП")
-- Генерация предварительной заявки (в формате doc) с текстовым наполнением (подробным объяснением решением по запросу) и спецификацией, отправка заявки на почту специалисту отдела продаж и отправка заявки в CRM
+📝 Description
+UAV buyers are often industry specialists in their fields but may not be UAV operators or technical experts.
+The goal is to create a consultant-style interface that suggests the appropriate UAV configuration based on the client's task, calculates the estimated cost, and sends a request to the sales department.
 
-Что можно сделать на хакатоне:
-- UI с фильтрами и логикой подбора
-- Конфигуратор параметров
-- LLM-генерация текста на основе входящей заявки
-- Пример финального документа/заявки
+⚙️ Functionality
+Selection of usage scenario (e.g., security, geodesy, inspection, etc.)
 
-Технологии:
-- Языки: JavaScript/Typescript/python(Backend, то есть Django)
-- Фреймворки: React
-- ОС: Кроссплатформенность
-- Инструменты: Figma (дизайн), Git
+Algorithm for selecting the model, payload, battery, and other components
 
-Формат результата:
-Одностраничный сайт, предлагающее конфигурацию и считающее цену, с функциональной возможностью отправки заявки специалисту отдела продаж по нажатию кнопки "Рассчитать решение"
+Preliminary cost estimation
+(If the request is non-standard, show: "Additional specialist analysis required; final pricing will be provided in the official commercial offer.")
+
+Generation of a preliminary application (in .doc format) with detailed explanation and specifications
+
+Sending the application to the sales department's email and CRM system
+
+💻 What can be done during the hackathon
+UI with filters and selection logic
+
+Parameter configurator
+
+LLM-based text generation from incoming requests
+
+Example of the final document/application
+
+🛠 Technologies
+Languages: JavaScript / TypeScript / Python (Backend - Django)
+
+Frameworks: React
+
+Platforms: Cross-platform
+
+Tools: Figma (design), Git
+
+🚀 Deliverable
+A one-page website that suggests a UAV configuration, calculates the estimated price, and allows users to send a request to a sales specialist via the "Calculate Solution" button.
