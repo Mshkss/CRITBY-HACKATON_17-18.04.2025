@@ -16,7 +16,7 @@ def double_number(request):
             phone = data.get("phone", 0)
             additionalInfo = data.get("additionalInfo", 0)
     
-            print(f"Received data: {data}")
+            ####print(f"Received data: {data}")
 
             # Создаем CSV в памяти
             csv_file = StringIO()

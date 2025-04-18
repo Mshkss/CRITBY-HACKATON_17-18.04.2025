@@ -13,7 +13,7 @@ const Logo: React.FC = () => {
           </div>
         </div>
       </div>
-      <span className="text-2xl font-semibold tracking-wider">АБАКС</span>
+      <span className="text-2xl font-semibold tracking-wider">АВАКС</span>
     </div>
   );
 };

@@ -132,38 +132,55 @@ const SurveyTabContent: React.FC<SurveyTabContentProps> = ({
     timingData: finalTimingData
   });
 
-  try {
-    const response = await fetch('http://127.0.0.1:8000/app2/double-number/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contact: contactData,
-        responses,
-        tags: selectedTags,
-        timingData: finalTimingData
-      }),
-    });
+// ...existing code...
+try {
+  // Первый запрос в app2
+  const response = await fetch('http://127.0.0.1:8000/app2/double-number/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      contact: contactData,
+      responses,
+      tags: selectedTags,
+      timingData: finalTimingData
+    }),
+  });
 
-    if (!response.ok) {
-      throw new Error('Ошибка при отправке данных');
-    }
+  // Второй запрос в app1
+    const responseApp1 = await fetch('http://127.0.0.1:8000/app1/generate_docx/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      contact: contactData,
+      responses,
+      tags: selectedTags,
+      timingData: finalTimingData
+    }),
+  });
 
-    toast({
-      title: "Запрос отправлен",
-      description: "Специалист свяжется с вами в ближайшее время",
-    });
-    setIsSubmitting(false);
-    onSubmitComplete(contactData, finalTimingData);
-  } catch (error) {
-    toast({
-      title: "Ошибка",
-      description: "Не удалось отправить заявку. Попробуйте позже.",
-      variant: "destructive",
-    });
-    setIsSubmitting(false);
+  if (!response.ok || !responseApp1.ok) {
+    throw new Error('Ошибка при отправке данных');
   }
+
+  toast({
+    title: "Запрос отправлен",
+    description: "Специалист свяжется с вами в ближайшее время",
+  });
+  setIsSubmitting(false);
+  onSubmitComplete(contactData, finalTimingData);
+} catch (error) {
+  toast({
+    title: "Ошибка",
+    description: "Не удалось отправить заявку. Попробуйте позже.",
+    variant: "destructive",
+  });
+  setIsSubmitting(false);
+}
+// ...existing code...
 };
   const handleContactFormCancel = () => {
     setShowContactForm(false);
