@@ -39,9 +39,9 @@ export const surveyQuestions: SurveyQuestion[] = [
     text: "1.1. Какой основной тип оборудования вам нужен?",
     section: 1,
     options: [
-      { id: "equipment_type_1", text: "Готовый к полету беспилотник (БПЛА)", value: "тип_бпла" },
-      { id: "equipment_type_2", text: "Отдельный компонент для БПЛА", value: "тип_компонент" },
-      { id: "equipment_type_3", text: "Программное обеспечение для БПЛА", value: "тип_по" }
+      { id: "equipment_type_1", text: "Готовый к полету беспилотник БАС", value: "тип_бпла" },
+      { id: "equipment_type_2", text: "Отдельный компонент для БАС", value: "тип_компонент" },
+      { id: "equipment_type_3", text: "Программное обеспечение для БАС", value: "тип_по" }
     ]
   },
   {
@@ -71,7 +71,7 @@ export const surveyQuestions: SurveyQuestion[] = [
     section: 2,
     skipLogic: {
       dependsOn: "equipment_type",
-      showWhen: ["тип_бпла"]
+      showWhen: ["тип_бас"]
     },
     options: [
       { id: "flight_duration_1", text: "До 30 минут", value: "полет_продолжительность_до_30мин" },

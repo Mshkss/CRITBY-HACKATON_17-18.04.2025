@@ -77,6 +77,9 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
   );
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+
+
+
   
   // Синхронизируем изменения сообщений наружу через эффект
   useEffect(() => {
@@ -87,8 +90,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({
     }
   }, [messages, initialMessages]);
   
-  const apiKey = '';
-  const url = '';
+  //api and url here//
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserInput(e.target.value);
