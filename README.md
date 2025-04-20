@@ -1,5 +1,4 @@
 Mobile UAV Configurator for Clients
-
 Hackathon: KRITBI AVAX
 
 Dates: 17.04.2025 – 18.04.2025
