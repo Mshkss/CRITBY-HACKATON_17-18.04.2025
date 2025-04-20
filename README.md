@@ -1,6 +1,9 @@
 Mobile UAV Configurator for Clients
+
 Hackathon: KRITBI AVAX
+
 Dates: 17.04.2025 – 18.04.2025
+
 My role: Python Django backend development, organizing requests (JSON, HTTP POST) between frontend and backend, and setting up CI/CD processes.
 
 📌 Topic
@@ -26,6 +29,7 @@ Generation of a preliminary application (in .doc format) with detailed explanati
 Sending the application to the sales department's email and CRM system
 
 💻 What can be done during the hackathon
+
 UI with filters and selection logic
 
 Parameter configurator
@@ -35,6 +39,7 @@ LLM-based text generation from incoming requests
 Example of the final document/application
 
 🛠 Technologies
+
 Languages: JavaScript / TypeScript / Python (Backend - Django)
 
 Frameworks: React
@@ -44,4 +49,5 @@ Platforms: Cross-platform
 Tools: Figma (design), Git
 
 🚀 Deliverable
+
 A one-page website that suggests a UAV configuration, calculates the estimated price, and allows users to send a request to a sales specialist via the "Calculate Solution" button.
