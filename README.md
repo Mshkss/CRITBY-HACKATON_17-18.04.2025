@@ -3,7 +3,7 @@ Hackathon: KRITBI AVAX
 Dates: 17.04.2025 – 18.04.2025
 My role: Python Django backend development, organizing requests (JSON, HTTP POST) between frontend and backend, and setting up CI/CD processes.
 
-📌 Topic
+# 📌 Topic
 Mobile UAV Configurator for Clients
 
 📝 Description
