@@ -3,14 +3,17 @@ Hackathon: KRITBI AVAX
 Dates: 17.04.2025 – 18.04.2025
 My role: Python Django backend development, organizing requests (JSON, HTTP POST) between frontend and backend, and setting up CI/CD processes.
 
-# 📌 Topic
+📌 Topic
+
 Mobile UAV Configurator for Clients
 
 📝 Description
+
 UAV buyers are often industry specialists in their fields but may not be UAV operators or technical experts.
 The goal is to create a consultant-style interface that suggests the appropriate UAV configuration based on the client's task, calculates the estimated cost, and sends a request to the sales department.
 
 ⚙️ Functionality
+
 Selection of usage scenario (e.g., security, geodesy, inspection, etc.)
 
 Algorithm for selecting the model, payload, battery, and other components
